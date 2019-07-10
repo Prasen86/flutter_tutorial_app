@@ -29,7 +29,69 @@ Widget _bodyWidget() {
             radius: 50.0,
             backgroundColor: Colors.red,
             backgroundImage: AssetImage('assets/images/rhythm.jpg'),
-          )
+          ),
+          Container(
+            margin: EdgeInsets.all(10.0),
+            child: new Text(
+              "RHYTHM SHARMA",
+              style: TextStyle(
+                  color: Colors.white, fontSize: 20.0, fontFamily: 'Pacifico'),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(10.0),
+            child: new Text(
+              "Think Big Think Different",
+              style: TextStyle(
+                  letterSpacing: 3.0,
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontFamily: 'SourceSansPro',
+                  fontStyle: FontStyle.italic),
+            ),
+          ),
+          SizedBox(
+            height: 20.0,
+            width: 150.0,
+            child: Divider(
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            color: Colors.white,
+            margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.phone_android,
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                Text(
+                  "Phone No.",
+                  style: TextStyle(
+                    fontFamily: "SourceSansPro",
+                    fontSize: 20.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Card(
+            color: Colors.white,
+            margin: EdgeInsets.all(10.0),
+            child: ListTile(
+              leading: Icon(
+                Icons.email,
+              ),
+              title: Text(
+                "Email",
+                style: TextStyle(fontFamily: "SourceSansPro", fontSize: 20.0),
+              ),
+            ),
+          ),
         ],
       ),
     ),
