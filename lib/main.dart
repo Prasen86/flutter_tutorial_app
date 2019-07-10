@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 Widget _bodyWidget() {
   return new Container(
-    color: Colors.red,
+    color: Colors.black,
     child: Center(
       child: new Image(
         image: AssetImage("assets/images/iampoor.png"),
