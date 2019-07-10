@@ -17,7 +17,15 @@ class HomePage extends StatefulWidget {
 }
 
 Widget _bodyWidget() {
-  return new Container();
+  return new Container(
+    color: Colors.white,
+    child: Center(
+      child: new Image(
+        image: AssetImage("assets/images/iampoor.png"),
+        fit: BoxFit.fill,
+      ),
+    ),
+  );
 }
 
 class _HomePageState extends State<HomePage> {
