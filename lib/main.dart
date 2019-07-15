@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() => runApp(MyApp());
 
@@ -6,37 +7,49 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new HomePage(),
+      home: Scaffold(
+        body: SafeArea(child: new BodyWidget()),
+      ),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class BodyWidget extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _BodyWidgetState createState() => _BodyWidgetState();
 }
 
-Widget _bodyWidget() {
-  return new Container(
-    color: Colors.white,
-    child: Center(
-      child: new Image(
-        image: AssetImage("assets/images/iampoor.png"),
-        fit: BoxFit.fill,
+Expanded buildKey(Color color, int keyNo) {
+  return Expanded(
+    child: Container(
+      width: double.infinity,
+      margin: EdgeInsets.fromLTRB(keyNo * 10.0, 5.0, keyNo * 10.0, 5.0),
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          final player = AudioCache();
+          player.play('sounds/note$keyNo.wav');
+        },
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0), side: BorderSide()),
       ),
     ),
   );
 }
 
-class _HomePageState extends State<HomePage> {
+class _BodyWidgetState extends State<BodyWidget> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: Center(child: new Text("I AM POOR")),
-        backgroundColor: Colors.red,
-      ),
-      body: _bodyWidget(),
+    return Column(
+      children: <Widget>[
+        buildKey(Colors.red, 1),
+        buildKey(Colors.blue, 2),
+        buildKey(Colors.yellow, 3),
+        buildKey(Colors.green, 4),
+        buildKey(Colors.indigo, 5),
+        buildKey(Colors.orange, 6),
+        buildKey(Colors.purple, 7),
+      ],
     );
   }
 }
