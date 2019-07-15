@@ -19,12 +19,23 @@ class BodyWidget extends StatefulWidget {
   _BodyWidgetState createState() => _BodyWidgetState();
 }
 
-Expanded buildKey(Color color, int keyNo) {
+Expanded buildKey(Color color, int keyNo, String keyName) {
   return Expanded(
     child: Container(
       width: double.infinity,
       margin: EdgeInsets.fromLTRB(keyNo * 10.0, 5.0, keyNo * 10.0, 5.0),
       child: FlatButton(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Icon(Icons.music_note),
+            Text(
+              keyName,
+              style: TextStyle(fontSize: 20.0),
+            ),
+            Icon(Icons.music_note),
+          ],
+        ),
         color: color,
         onPressed: () {
           final player = AudioCache();
@@ -42,13 +53,13 @@ class _BodyWidgetState extends State<BodyWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        buildKey(Colors.red, 1),
-        buildKey(Colors.blue, 2),
-        buildKey(Colors.yellow, 3),
-        buildKey(Colors.green, 4),
-        buildKey(Colors.indigo, 5),
-        buildKey(Colors.orange, 6),
-        buildKey(Colors.purple, 7),
+        buildKey(Colors.red, 1, "A"),
+        buildKey(Colors.blue, 2, "B"),
+        buildKey(Colors.yellow, 3, "C"),
+        buildKey(Colors.green, 4, "D"),
+        buildKey(Colors.indigo, 5, "E"),
+        buildKey(Colors.orange, 6, "F"),
+        buildKey(Colors.purple, 7, "G"),
       ],
     );
   }
