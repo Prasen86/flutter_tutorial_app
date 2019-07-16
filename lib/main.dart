@@ -16,27 +16,19 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-Widget _bodyWidget() {
-  return new Container(
-    color: Colors.white,
-    child: Center(
-      child: new Image(
-        image: AssetImage("assets/images/iampoor.png"),
-        fit: BoxFit.fill,
-      ),
-    ),
-  );
-}
-
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: Center(child: new Text("I AM POOR")),
-        backgroundColor: Colors.red,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage('assets/images/background.png'),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: _bodyWidget(),
+      child: Column(
+
+      ),
     );
   }
 }
