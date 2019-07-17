@@ -35,52 +35,66 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         decoration: _background(),
         child: SafeArea(
-            minimum: EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Expanded(
-                  flex: 12,
-                  child: Center(
-                    child: Text(
-                      storyBrain.getStory(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+          minimum: EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                flex: 12,
+                child: Center(
+                  child: Text(
+                    storyBrain.getStory(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 3,
+              ),
+              Expanded(
+                flex: 3,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(style: BorderStyle.solid, width: 2.0),
+                  ),
+                  onPressed: () {
+                    setState(
+                      () {
+                        storyBrain.nextStory(1);
+                      },
+                    );
+                  },
+                  color: Colors.red,
+                  child: Text(storyBrain.getChoice1()),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Expanded(
+                flex: 3,
+                child: Visibility(
+                  visible: storyBrain.buttonShouldBeVisible(),
                   child: FlatButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       side: BorderSide(style: BorderStyle.solid, width: 2.0),
                     ),
-                    onPressed: () {},
-                    color: Colors.red,
-                    child: Text('CHOICE 1'),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Expanded(
-                  flex: 3,
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      side: BorderSide(style: BorderStyle.solid, width: 2.0),
-                    ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
+                    },
                     color: Colors.green,
-                    child: Text('CHOICE 2'),
+                    child: Text(storyBrain.getChoice2()),
                   ),
                 ),
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
